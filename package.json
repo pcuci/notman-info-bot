@@ -1,0 +1,21 @@
+{
+  "name": "notman-info-bot",
+  "homepage": "https://github.com/maison-notman-house/notman-info-bot/",
+  "description": "An info chatbot for Notman House.",
+  "version": "0.5.1",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "main": "./app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maison-notman-house/notman-info-bot.git"
+  },
+  "dependencies": {
+    "botbuilder": ">=3.5.3"
+  },
+  "contributors": [
+    { "name": "Jeffrey Dungen" }
+  ],
+  "license": "MIT"
+}
