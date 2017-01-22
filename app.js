@@ -14,6 +14,15 @@ intents.matches(/^change name/i, [
     }
 ]);
 
+intents.matches(/bathroom/i, [
+    function (session) {
+        session.beginDialog('/bathroom');
+    },
+    function (session, results) {
+        session.send('Ok, great - good luck finding the bathroom on floor %s', session.userData.currentFloor);
+    }
+]);
+
 intents.onDefault([
     function (session, args, next) {
         if (!session.userData.name) {
@@ -36,3 +45,27 @@ bot.dialog('/profile', [
         session.endDialog();
     }
 ]);
+
+bot.dialog('/bathroom', [
+    function (session) {
+        builder.Prompts.text(session, 'What floor are you on?');
+    },
+    function (session, results) {
+        session.userData.currentFloor = results.response;
+        if (session.userData.currentFloor === '1') {
+          session.send('Look near the stairs in the back, for floor %s!', session.userData.currentFloor);
+        } else {
+          session.send('You\'re joking, this is not a real floor.\n Head over to the OSMO cafe on the main floor, please! You typed in %s',
+          session.userData.currentFloor);
+        }
+    },
+    function (session, results) {
+        session.endDialog();
+    }
+]);
+
+// where's the bathroom?
+// what's the wifi password?
+// how many events going on?
+// how many people upstairs?
+//
